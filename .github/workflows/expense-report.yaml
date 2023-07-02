@@ -33,7 +33,7 @@ jobs:
           echo "SET_2=send_text" >> "$GITHUB_OUTPUT"
           echo "SET_3=send_email" >> "$GITHUB_OUTPUT"
           
-          echo "[Message]\nData API Check done successfully\n[End]"
+          echo -e "[Message]\nData API Check done successfully\n[End]"
 
   send-text:
     if: ${{ needs.data-check.outputs.output2 == 'send_text' }}
@@ -58,7 +58,7 @@ jobs:
           echo "EMAIL_2=Axolotl" >> "$GITHUB_OUTPUT"
           echo "EMAIL_3=FennecFox" >> "$GITHUB_OUTPUT"
           
-          echo "[Message]\nText sent successfully\n[End]"
+          echo -e "[Message]\nText sent successfully\n[End]"
 
   send-email:
     if: ${{ needs.data-check.outputs.output3 == 'send_email' }}
@@ -83,4 +83,4 @@ jobs:
           echo "EMAIL_2=Dragonfruit" >> "$GITHUB_OUTPUT"
           echo "EMAIL_3=Mangosteen" >> "$GITHUB_OUTPUT"
 
-          echo "[Message]\nEmail sent successfully\n[End]"
+          echo -e "[Message]\nEmail sent successfully\n[End]"
