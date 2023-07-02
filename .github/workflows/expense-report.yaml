@@ -5,7 +5,7 @@ run-name: expense_report every 4th day of the month
 on:
   schedule:
     #- cron: '0 18 */4 * *' # At 18:00 UTC (that ois 13:00 CST) on every 4th day-of-month.
-    - cron: '*/5 * * * *' # test every 15mins. 
+    - cron: '*/5 * * * *'
 
 env:
   #
