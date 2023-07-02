@@ -1,11 +1,11 @@
 #
-name: expense_watch_dog.
-run-name: expense_watch_dog every 4th day of the month
+name: expense_report.
+run-name: expense_report every 4th day of the month
 # run-name: ${{ github.event.head_commit.message }}
 on:
   schedule:
     #- cron: '0 18 */4 * *' # At 18:00 UTC (that ois 13:00 CST) on every 4th day-of-month.
-    - cron: '*/15 * * * *' # test every 15mins. 
+    - cron: '*/5 * * * *' # test every 15mins. 
 
 env:
   #
