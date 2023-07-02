@@ -1,0 +1,86 @@
+#
+name: expense_watch_dog.
+run-name: expense_watch_dog every 4th day of the month
+# run-name: ${{ github.event.head_commit.message }}
+on:
+  schedule:
+    #- cron: '0 18 */4 * *' # At 18:00 UTC (that ois 13:00 CST) on every 4th day-of-month.
+    - cron: '*/15 * * * *' # test every 15mins. 
+
+env:
+  #
+  email_phone: ${{ secrets.EMAIL_PHONE }}
+
+jobs:
+  data-check:
+    runs-on: ubuntu-20.04
+    environment: expense_gha_env
+    outputs:
+      output1: ${{ steps.dc.outputs.SET_1 }}
+      output2: ${{ steps.dc.outputs.SET_2 }}
+      output3: ${{ steps.dc.outputs.SET_3 }}
+    steps:
+      - name: Checkout Repo.
+        uses: actions/checkout@v3
+      - name: Install Python.
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - name: Data API Check - 1.
+        id: dc
+        run: |
+          echo "SET_1=BodyArmor" >> "$GITHUB_OUTPUT"
+          echo "SET_2=send_text" >> "$GITHUB_OUTPUT"
+          echo "SET_3=send_email" >> "$GITHUB_OUTPUT"
+          
+          echo "[Message]\nData API Check done successfully\n[End]"
+
+  send-text:
+    if: ${{ needs.data-check.outputs.output2 == 'send_text' }}
+    needs: data-check
+    runs-on: ubuntu-20.04
+    environment: expense_gha_env
+    outputs:
+      output1: ${{ steps.st.outputs.EMAIL_1 }}
+      output2: ${{ steps.st.outputs.EMAIL_2 }}
+      output3: ${{ steps.st.outputs.EMAIL_3 }}
+    steps:
+      - name: Checkout Repo.
+        uses: actions/checkout@v3
+      - name: Install Python.
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - name: Send Text message - 1.
+        id: st
+        run: |
+          echo "EMAIL_1=Quokka" >> "$GITHUB_OUTPUT"
+          echo "EMAIL_2=Axolotl" >> "$GITHUB_OUTPUT"
+          echo "EMAIL_3=FennecFox" >> "$GITHUB_OUTPUT"
+          
+          echo "[Message]\nText sent successfully\n[End]"
+
+  send-email:
+    if: ${{ needs.data-check.outputs.output3 == 'send_email' }}
+    needs: data-check
+    runs-on: ubuntu-20.04
+    environment: expense_gha_env
+    outputs:
+      output1: ${{ steps.se.outputs.EMAIL_1 }}
+      output2: ${{ steps.se.outputs.EMAIL_2 }}
+      output3: ${{ steps.se.outputs.EMAIL_3 }}
+    steps:
+      - name: Checkout Repo.
+        uses: actions/checkout@v3
+      - name: Install Python.
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      - name: Send Email message - 1.
+        id: se
+        run: |
+          echo "EMAIL_1=Rambutan" >> "$GITHUB_OUTPUT"
+          echo "EMAIL_2=Dragonfruit" >> "$GITHUB_OUTPUT"
+          echo "EMAIL_3=Mangosteen" >> "$GITHUB_OUTPUT"
+
+          echo "[Message]\nEmail sent successfully\n[End]"

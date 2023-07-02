@@ -1,0 +1,73 @@
+{
+    "common": {
+        "name": "expenses-reports",
+        "author": "texas-domain",
+        "month": "July"
+    },
+    "utilities": {
+        "electricity": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        },
+        "water": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        },
+        "internet": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        },
+        "waste-disposal": {
+            "website": "",
+            "date": "",
+            "frequency": "3-months"
+        },
+        "gas": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        }
+    },
+    "payments": {
+        "mortgage": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        },
+        "car-mama": {
+            "website": "na",
+            "date": "na",
+            "frequency": "1-month"
+        },
+        "car-papa": {
+            "website": "na",
+            "date": "na",
+            "frequency": "1-month"
+        }
+    },
+    "insurance": {
+        "home": {
+            "website": "",
+            "date": "",
+            "frequency": "1-year"
+        },
+        "flood": {
+            "website": "",
+            "date": "",
+            "frequency": "1-year"
+        },
+        "car-mama": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        },
+        "car-papa": {
+            "website": "",
+            "date": "",
+            "frequency": "1-month"
+        }
+    }
+}
